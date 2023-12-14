@@ -14,8 +14,8 @@ else:
     WIDTH, HEIGHT = 1000, 700
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-BLUE = (0, 0, 255)  # Blue color for player's projectiles
-RED = (255, 0, 0)  # Red color for projectiles
+BLUE = (0, 0, 255)  
+RED = (255, 0, 0) 
 PLAYER_WIDTH, PLAYER_HEIGHT = 50, 75
 PLAYER_SPEED = 5
 OBSTACLE_WIDTH, OBSTACLE_HEIGHT = 50, 50
@@ -51,7 +51,7 @@ class Player:
         if keys[pygame.K_UP]:
             self.y -= PLAYER_SPEED
             self.engine_flame_visible = True
-            # Prevent the player from going off-screen up
+           
             if self.y < 0:
                 self.y = 0
         else:
@@ -62,7 +62,7 @@ class Player:
             if self.y > HEIGHT - PLAYER_HEIGHT:
                 self.y = HEIGHT - PLAYER_HEIGHT
 
-        # Wrap around the screen horizontally (left and right)
+       
         if self.x < 0:
             self.x = WIDTH - PLAYER_WIDTH
         elif self.x > WIDTH - PLAYER_WIDTH:
@@ -141,15 +141,15 @@ class Game:
                     if event.key == pygame.K_SPACE:
                         self.player.shoot()
                     elif event.key == pygame.K_ESCAPE:
-                        self.game_state = MENU  # Return to the menu
+                        self.game_state = MENU  
 
     def start_game(self):
         self.game_state = GAME
         self.player = Player()
         self.obstacles = []
         self.score = 0
-        self.player.lives = PLAYER_LIVES  # Reset player lives
-        self.player.reset_position()  # Reset player position
+        self.player.lives = PLAYER_LIVES  
+        self.player.reset_position()  
 
     def generate_obstacles(self):
         if random.randint(1, 100) < 10:
@@ -217,7 +217,7 @@ class Game:
 
             # Check for player out of lives
             if self.player.lives <= 0:
-                self.game_state = MENU  # Return to the menu
+                self.game_state = MENU  
 
         elif self.game_state == MENU:
             # Handle menu logic
@@ -266,7 +266,7 @@ def main():
         game.handle_events()
         game.update_game()
         game.draw_game()
-        pygame.display.flip()  # Update the display
+        pygame.display.flip()  
         game.clock.tick(60)
 
 if __name__ == "__main__":
